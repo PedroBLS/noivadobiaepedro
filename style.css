@@ -458,41 +458,105 @@ button {
   text-transform: uppercase;
 }
 
+
 @media (max-width: 768px) {
-  header {
-    margin-left: 47px;
+  
+  /* 1. Ajuste do Menu Superior */
+  .lista-navegacao {
+    flex-direction: row;
+    gap: 15px;
+    padding: 0;
+    text-align: center;
   }
 
+  /* 2. Ajuste da Tela Inicial (Hero) para o texto não vazar */
+  .hero {
+    padding: 60px 20px;
+    min-height: auto;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .hero-texto {
+    width: 100%;
+    align-items: center;
+  }
+
+  .nomes-destaque {
+    font-size: 60px; /* Fonte reduzida para caber na tela */
+    line-height: 1.2;
+  }
+  
+  .chamada {
+    font-size: 16px;
+  }
+
+  /* Deixa a foto de vocês bem suave no fundo para destacar os botões */
+  .hero-background-image {
+    width: 100%;
+    opacity: 0.15; 
+  }
+  
+  .hero-background-image::before {
+    background: transparent; 
+  }
+
+  .botoes-hero {
+    width: 100%;
+  }
+
+  /* 3. Ajuste do Contador (Permite que as caixinhas desçam de linha) */
+  .contador {
+    flex-wrap: wrap; 
+    gap: 10px;
+  }
+  
+  .bloco-tempo {
+    min-width: 70px;
+    padding: 15px;
+  }
+  
+  .numero {
+    font-size: 32px;
+  }
+  
+  .separador {
+    display: none; /* Escondido no celular para poupar espaço horizontal */
+  }
+  
+  .titulo-contador {
+    font-size: 32px;
+  }
+
+  /* 4. Ajuste dos Cartões de Categoria (O erro principal estava aqui) */
+  .card-item {
+    flex-direction: column; /* Coloca um card exatamente embaixo do outro */
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .card-item > div {
+    width: 100%;
+    max-width: 320px;
+    height: 180px; 
+  }
+
+  /* 5. Ajustes do Formulário e Rodapé */
   p {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 0;
   }
 
-  .categorias {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        padding: 20px;
-}
-
-  .categorias > div {
-        width: 90%;
-        height: 120px;
-    }
-  
   .formulario-presenca {
-        width: 95%;
-        margin: 10px auto;
-        padding: 15px;
-    }
-  
-  .campo {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-  
-  .campo input {
-        width: 100%;
-    }
+    width: 100%;
+    padding: 0 10px;
   }
+
+  .rodape {
+    padding: 40px 20px;
+  }
+  
+  .logo-final {
+    font-size: 36px;
+  }
+}
