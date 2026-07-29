@@ -40,7 +40,20 @@
         <h2>Presentes Sugeridos</h2>
 
 <div class="grid-presentes" id="lista-presentes">
-            
+
+<!-- ================= PIX AJUDA (QUALQUER VALOR) ================= -->
+            <!-- Atenção: Não coloque data-category para ele aparecer sempre, ou crie uma categoria específica -->
+            <div class="card-presente" style="border: 2px solid #829379;" 
+                 data-qrcode="./assets/images/seu-qrcode-pix.png" 
+                 data-link-cartao="">
+                 
+                <!-- Usando um emoji gigante como foto -->
+                <div class="foto-placeholder" style="background-color: #F7F3ED;"><span style="font-size: 3rem;">🎁</span></div>
+                <h3>Pix: Ajude com qualquer valor!</h3>
+                <p class="preco" style="font-size: 1rem;">Valor Livre</p>
+                <button class="btn-presentear" style="background-color: #829379; color: white;">Contribuir</button>
+            </div>    
+
             <!-- ================= BANHEIRO ================= -->
             <div class="card-presente" data-category="banheiro" data-qrcode="" data-link-cartao="">
                 <div class="foto-placeholder"><img src="./assets/images/Jogo de toalha.png" alt=""></div>
@@ -688,7 +701,7 @@
     const botoesPresentear = document.querySelectorAll('.btn-presentear');
 
     // 2. Abre o Modal e reseta as etapas
-    botoesPresentear.forEach(botao => {
+botoesPresentear.forEach(botao => {
         botao.addEventListener('click', function() {
             passo1.style.display = 'block';
             passo2.style.display = 'none';
@@ -696,13 +709,25 @@
             btnEnviarMensagem.innerText = "Confirmar e Ir para Pagamento";
             btnEnviarMensagem.disabled = false;
 
+            // Pega a caixa do presente inteiro
             const card = this.closest('.card-presente');
+            
+            // Extrai as informações normais (Nome e Preço)
             const nomePresente = card.querySelector('h3').innerText;
             const precoPresente = card.querySelector('.preco').innerText;
 
+            // NOVIDADE: Extrai o Link e o QR Code escondidos nos Data Attributes!
+            const imgQrCodeEspecifico = card.getAttribute('data-qrcode');
+            const linkCartaoEspecifico = card.getAttribute('data-link-cartao');
+
+            // Preenche os textos do Modal
             tituloModal.innerText = nomePresente;
             precoModal.innerText = precoPresente;
             inputPresenteEscondido.value = nomePresente; 
+
+            // NOVIDADE: Preenche as opções de pagamento do Modal
+            document.querySelector('.qr-code').src = imgQrCodeEspecifico;
+            document.querySelector('.btn-cartao').href = linkCartaoEspecifico;
 
             modal.style.display = 'flex';
         });
