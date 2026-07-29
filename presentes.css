@@ -1,0 +1,343 @@
+/* ==========================================================================
+   Variáveis de Cores (Paleta Premium de E-commerce)
+   ========================================================================== */
+:root {
+    --bg-loja: #FAFAFA;
+    --cor-texto: #333333;
+    --cor-secundaria: #767676;
+    --cor-destaque: #B8860B; /* Dourado */
+    --cor-botao: #222222;
+    --cor-borda: #EAEAEA;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-loja);
+    margin: 0;
+}
+
+.cabecalho-loja {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid var(--cor-borda);
+    top: 0;
+    z-index: 100;
+}
+
+.cabecalho-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: var(--cor-botao);
+    line-height: 1;
+}
+
+.busca-container {
+    flex: 1;
+    max-width: 400px;
+    margin-left: 40px;
+}
+
+#input-busca {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #CCC;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#input-busca:focus {
+    border-color: var(--cor-destaque);
+}
+
+/* ==========================================================================
+   Container da Vitrine
+   ========================================================================== */
+.vitrine-presentes {
+    padding: 30px 20px;
+}
+
+.vitrine-presentes h2 {
+    display: none; /* Escondemos o título grande para economizar espaço vertical */
+}
+
+/* ==========================================================================
+   Menu Superior de Categorias (Filtros da Loja)
+   ========================================================================== */
+.menu-lista {
+    padding: 10px 20px;
+}
+
+.categorias {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.categorias button {
+    background: transparent;
+    color: var(--cor-secundaria);
+    border: none;
+    padding: 6px 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.categorias button:hover,
+.categorias .ativo button {
+    color: var(--cor-botao);
+    border-bottom: 2px solid var(--cor-botao); /* Sublinhado elegante ao invés de pílula */
+}
+
+/* ==========================================================================
+   Grid de Produtos (A Prateleira da Loja)
+   ========================================================================== */
+.grid-presentes {
+    display: grid;
+    /* Cartões menores: mínimo de 180px em vez de 240px */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px; /* Espaço reduzido entre os itens */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   Design do Produto (O Card)
+   ========================================================================== */
+.card-presente {
+    background-color: #ffffff;
+    border: 1px solid var(--cor-borda);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: box-shadow 0.2s ease;
+}
+
+.card-presente:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card-presente.escondido {
+    display: none !important;
+}
+
+.foto-placeholder {
+    width: 100%;
+    height: 90px;
+    background-color: #F8F8F8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem; 
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.foto-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    padding: 5px; 
+    box-sizing: border-box;
+}
+
+.card-presente h3 {
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin: 0 0 5px 0;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;            
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 32px;
+}
+
+/* Preço */
+.preco {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cor-destaque);
+    margin-bottom: 12px;
+}
+
+.btn-presentear {
+    background-color: transparent;
+    color: var(--cor-botao);
+    border: 1px solid var(--cor-botao);
+    padding: 8px 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+.btn-presentear:hover {
+    background-color: var(--cor-botao);
+    color: #FFFFFF;
+}
+
+/* ==========================================================================
+   Controles da Paginação (Estilo Loja Virtual)
+   ========================================================================== */
+#paginacao {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.btn-pagina {
+    background-color: transparent;
+    color: var(--cor-secundaria);
+    border: 1px solid var(--cor-borda);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Bolinhas para paginação */
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.btn-pagina:hover {
+    border-color: var(--cor-texto);
+    color: var(--cor-texto);
+}
+
+.btn-pagina.ativo-pagina {
+    background-color: var(--cor-texto);
+    color: #FFFFFF;
+    border-color: var(--cor-texto);
+}
+
+/* ==========================================================================
+   Rodapé da Loja (Para fechar o espaço em branco)
+   ========================================================================== */
+.rodape-loja {
+    background-color: #FFFFFF;
+    border-top: 1px solid var(--cor-borda);
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 50px; /* Empurra o rodapé para baixo, separando da paginação */
+}
+
+.logo-rodape {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: var(--cor-botao);
+    margin-bottom: 10px;
+}
+
+.rodape-loja p {
+    color: var(--cor-secundaria);
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+
+  /* Header empilha logo e busca */
+  .cabecalho-topo {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .busca-container {
+    margin-left: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* Menu de categorias rola horizontalmente */
+  .categorias {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important; 
+    overflow-x: auto;             
+    -webkit-overflow-scrolling: touch; 
+    justify-content: flex-start;
+    padding: 5px 15px 15px 15px;         
+    gap: 15px;
+    scrollbar-width: none;        
+  }
+
+  .categorias::-webkit-scrollbar {
+    display: none;
+  }
+
+  .categorias button {
+    white-space: nowrap;          
+  }
+
+  .item-menu {
+    flex: 0 0 auto !important;    
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+  }
+
+  /* Grid vira 2 colunas no celular */
+  .grid-presentes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* Cards menores no celular */
+  .foto-placeholder {
+    height: 70px;
+    font-size: 2rem;
+  }
+
+  .card-presente h3 {
+    font-size: 0.72rem;
+  }
+
+  .preco {
+    font-size: 0.95rem;
+  }
+
+  .btn-presentear {
+    font-size: 0.65rem;
+    padding: 6px 0;
+  }
+
+  /* Paginação menor */
+  .btn-pagina {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 380px) {
+  /* Celulares muito pequenos — 1 coluna */
+  .grid-presentes {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,139 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chá de Casa Nova - Pedro e Beatriz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="presentes.html">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  </head>
+
+<script src="./js/script.js" defer></script>
+
+<body> 
+  <header class = "menu-principal">
+    <nav>
+      <ul class = "lista-navegacao">
+        <li><a href ="#inicio">Início</a></li>
+        <li><a href ="#historia">Nossa História</a></li>
+        <li><a href ="#presentes">Lista de Presentes</a></li>
+        <li><a href ="#confirmacao">Lista de Confirmação</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<section class="hero" id="inicio">
+  <div class="hero-texto">
+    <span class="tagline">Chá de Panela</span>
+    <h1 class="nomes-destaque">Beatriz e Pedro</h1>
+    
+    <p class="chamada">
+      Estamos muito felizes em celebrar esse novo capítulo das nossas vidas e queremos compartilhar esse momento especial com pessoas que fazem parte da nossa história!
+    </p>
+    
+    <div class="botoes-hero">
+      <button class="btn-presentes">Ver lista de presentes</button>
+      <button class="btn-presenca">Confirmar presença</button>    
+    </div>
+  </div>
+  <div class="hero-background-image"></div>
+</section>
+
+<section class="contador-section" id="historia">
+  <div class="divisor-decorativo">
+    <span>♡</span>
+  </div>
+  <h2 class="titulo-contador">Faltam apenas...</h2>
+  <p class="subtitulo-contador">para celebrarmos juntos!</p>
+
+  <div class="contador">
+    <div class="bloco-tempo">
+      <span class="numero" id="dias">00</span>
+      <span class="label-tempo">Dias</span>
+    </div>
+    <span class="separador">:</span>
+    <div class="bloco-tempo">
+      <span class="numero" id="horas">00</span>
+      <span class="label-tempo">Horas</span>
+    </div>
+    <span class="separador">:</span>
+    <div class="bloco-tempo">
+      <span class="numero" id="minutos">00</span>
+      <span class="label-tempo">Minutos</span>
+    </div>
+    <span class="separador">:</span>
+    <div class="bloco-tempo">
+      <span class="numero" id="segundos">00</span>
+      <span class="label-tempo">Segundos</span>
+    </div>
+  </div>
+</section>
+
+<section class="presentes" id="presentes">
+  <div class="presentes-topo">
+    <h2 class="titutlo-secao">Sugestões de Presentes</h2>
+    <p>Sua presença é o nosso maior presente, mas se desejar nos presentear, aqui estão algumas sugestões.</p>
+  </div>
+
+  <div class="container-cards">
+    <div class="card-item">
+      <div class="sala"</div><h3><button onclick="window.location.href='presentes.html?categoria=sala'">Sala</button></h3></div>
+      <div class="cozinha"</div><h3><button onclick="window.location.href='presentes.html?categoria=cozinha'">Cozinha</button></h3></div>
+      <div class="quarto"</div><h3><button onclick="window.location.href='presentes.html?categoria=quarto'">Quarto</button></h3></div>
+      <div class="banheiro"</div><h3><button onclick="window.location.href='presentes.html?categoria=banheiro'">Banheiro</button></h3></div>
+      <div class="lavanderia"</div><h3><button onclick="window.location.href='presentes.html?categoria=lavanderia'">Lavanderia</button></h3></div>
+      <div class="escritorio"</div><h3><button onclick="window.location.href='presentes.html?categoria=escritorio'">Escritório</button></h3></div>
+    </div>
+  </div>
+
+  <section id="confirmacao">
+    <div class="confirmacao">
+      <h2>Lista de presença</h2>
+        <p>Sua presença é muito importante para nós!</p>
+      
+        <form action="https://api.sheetmonkey.io/form/pxD53SAwWNkFVKLVYzBNLR" method="POST" class="formulario-presenca"> 
+          
+          <div class="campo">
+            <label for="nome">Nome Completo</label>
+            <input type="text" name="Nome" id="nome" placeholder="Digite seu nome" required>
+          </div>
+          
+          <div class="campo">
+            <label for="conjuge">Acompanhante</label>
+            <input type="text" name="Acompanhante" id="conjuge" placeholder="Nome do acompanhante (se houver)">
+          </div>
+          
+          <div class="campo">
+            <label for="email">E-mail</label>
+            <input type="email" name="Email" id="email" placeholder="seuemail@exemplo.com" required>
+          </div>
+
+          <button type="submit" class="enviar-presenca">Confirmar Presença</button>
+        </form>
+    </div>
+  </section>
+
+<footer class="rodape">
+    <div class="rodape-conteudo">
+        <h2 class="logo-final">B&P</h2>
+        <p class="frase-final">“O amor é a celebração de dois corações que decidem caminhar juntos.”</p>
+        
+        <div class="info-evento">
+            <p><strong>Data:</strong> 05 de Setembro de 2026</p>
+            <p><strong>Local:</strong> SHIS QI 27, Conjunto 7, Casa 19</p>
+            <p><strong>Horário:</strong> 15:00 </p>
+            <p><strong>Informações:</strong> Traga o que for beber! </p>
+        </div>
+
+        <div class="creditos">
+            <p>Feito com amor por Beatriz & Pedro</p>
+            <small>&copy; 2026 - Todos os direitos reservados</small>
+        </div>
+    </div>
+</footer>
+
+</section>  
+<br>
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Presentes - Nosso Chá de Panela</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="presentes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<script src="./js/filtro-presentes.js"></script>
+
+<body>
+
+    <header class="cabecalho-loja">
+    <div class="cabecalho-topo">
+        <div class="logo">B&P</div>
+        <div class="busca-container">
+            <input type="text" id="input-busca" placeholder="Buscar presente por nome...">
+        </div>
+    </div>
+    
+    <nav class="menu-lista">
+        <div class="categorias">
+            <div class="item-menu ativo" id="btn-todos"><button>Ver Todos</button></div>
+            <div class="item-menu" id="btn-sala"><button>Sala</button></div>
+            <div class="item-menu" id="btn-cozinha"><button>Cozinha</button></div>
+            <div class="item-menu" id="btn-quarto"><button>Quarto</button></div>
+            <div class="item-menu" id="btn-banheiro"><button>Banheiro</button></div>
+            <div class="item-menu" id="btn-lavanderia"><button>Lavanderia</button></div>
+        </div>
+    </nav>
+</header>
+
+    <section class="vitrine-presentes">
+        <h2>Presentes Sugeridos</h2>
+
+<div class="grid-presentes" id="lista-presentes">
+            
+            <!-- ================= BANHEIRO ================= -->
+            <div class="card-presente" data-category="banheiro">
+                <div class="foto-placeholder"><img src="./assets/images/Jogo de toalha.png" alt=""></div>
+                <h3>Jogo de Toalhas</h3>
+                <p class="preco">R$ 280,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="banheiro">
+                <div class="foto-placeholder"><img src="./assets/images/Porta toalha.png" alt=""></div>
+                <h3>Porta Toalha</h3>
+                <p class="preco">R$ 149,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="banheiro">
+                <div class="foto-placeholder"><img src="./assets/images/Tapete de banheiro.png" alt=""></div>
+                <h3>Tapete de Banheiro</h3>
+                <p class="preco">R$ 111,25</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="banheiro">
+                <div class="foto-placeholder"><img src="./assets/images/Jogo de Pia.png" alt=""></div>
+                <h3>Jogo de Pia</h3>
+                <p class="preco">R$ 110,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="banheiro">
+                <div class="foto-placeholder"><img src="./assets/images/Porta papel higiênico.png" alt=""></div>
+                <h3>Porta Papel Higiênico</h3>
+                <p class="preco">R$ 56,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="banheiro">
+                <div class="foto-placeholder"><img src="./assets/images/Lixeira de banheiro.png" alt=""></div>
+                <h3>Lixeira de Banheiro</h3>
+                <p class="preco">R$ 49,90</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="banheiro">
+                <div class="foto-placeholder"><img src="./assets/images/Cesto de roupa suja.png" alt=""></div>
+                <h3>Cesto de Roupa Suja</h3>
+                <p class="preco">R$ 49,50</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+
+            <!-- ================= COZINHA & UTENSÍLIOS ================= -->
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Prato de jantar.png" alt=""></div>
+                <h3>Jogo de Pratos de Jantar</h3>
+                <p class="preco">R$ 145,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Prato de sobremesa.png" alt=""></div>
+                <h3>Jogo de Pratos de Sobremesa</h3>
+                <p class="preco">R$ 115,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Jogo de talher.webp" alt=""></div>
+                <h3>Jogo de Talheres</h3>
+                <p class="preco">R$ 119,90</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Jogo de copos.png" alt=""></div>
+                <h3>Jogo de Copos</h3>
+                <p class="preco">R$ 79,99</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Jogo de canecas.png" alt=""></div>
+                <h3>Jogo de Canecas</h3>
+                <p class="preco">R$ 116,93</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Taça de vinho.png" alt=""></div>
+                <h3>Taças de Vinho</h3>
+                <p class="preco">R$ 149,99</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Taça de champagne.png" alt=""></div>
+                <h3>Taças de Champagne</h3>
+                <p class="preco">R$ 149,99</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Jarra de agua.jpg" alt=""></div>
+                <h3>Jarra de Água</h3>
+                <p class="preco">R$ 52,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Travessas.png" alt=""></div>
+                <h3>Travessas</h3>
+                <p class="preco">R$ 228,74</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Petisqueira.png" alt=""></div>
+                <h3>Petisqueira</h3>
+                <p class="preco">R$ 50,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Jogo americano.png" alt=""></div>
+                <h3>Sousplat - Jogo Americano</h3>
+                <p class="preco">R$ 56,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Porta guardanapo.jpg" alt=""></div>
+                <h3>Porta Guardanapo</h3>
+                <p class="preco">R$ 40,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Porta papel toalha.jpg" alt=""></div>
+                <h3>Porta Papel Toalha</h3>
+                <p class="preco">R$ 40,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Toalha de mesa.png" alt=""></div>
+                <h3>Toalha de Mesa</h3>
+                <p class="preco">R$ 129,81</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Abridor de vinho.png" alt=""></div>
+                <h3>Abridor de Vinho Elétrico</h3>
+                <p class="preco">R$ 149,87</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Geladeira.webp" alt=""></div>
+                <h3>Geladeira</h3>
+                <p class="preco">R$ 3.000,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Máquina de lavar louça.webp" alt=""></div>
+                <h3>Máquina de Lava-louça</h3>
+                <p class="preco">R$ 2.900,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Microondas.webp" alt=""></div>
+                <h3>Micro-ondas</h3>
+                <p class="preco">R$ 620,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Fogão.webp" alt=""></div>
+                <h3>Fogão</h3>
+                <p class="preco">R$ 1.700,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Forno elétrico.jpg" alt=""></div>
+                <h3>Forno Elétrico</h3>
+                <p class="preco">R$ 720,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Air fryer.webp" alt=""></div>
+                <h3>Air Fryer</h3>
+                <p class="preco">R$ 420,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Liquidificador.jpg" alt=""></div>
+                <h3>Liquidificador</h3>
+                <p class="preco">R$ 270,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Batedeira.webp" alt=""></div>
+                <h3>Batedeira</h3>
+                <p class="preco">R$ 270,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/MIXER.jpg" alt=""></div>
+                <h3>Mixer</h3>
+                <p class="preco">R$ 358,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Torradeira.png" alt=""></div>
+                <h3>Torradeira</h3>
+                <p class="preco">R$ 121,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Sanduicheira.png" alt=""></div>
+                <h3>Sanduicheira</h3>
+                <p class="preco">R$ 103,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Espremedor de fruta.jpg" alt=""></div>
+                <h3>Espremedor de Frutas</h3>
+                <p class="preco">R$ 132,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Filtro de água.png" alt=""></div>
+                <h3>Filtro de Água</h3>
+                <p class="preco">R$ 494,90</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Máquina de gelo.png" alt=""></div>
+                <h3>Máquina de Gelo</h3>
+                <p class="preco">R$ 669,36</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Conjunto de panelas.png" alt=""></div>
+                <h3>Conjunto de Panelas</h3>
+                <p class="preco">R$ 443,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Formas de bolo.png" alt=""></div>
+                <h3>Formas de Bolo</h3>
+                <p class="preco">R$ 129,20</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Forma de pizza.png" alt=""></div>
+                <h3>Forma de Pizza</h3>
+                <p class="preco">R$ 66,76</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Pegador.png" alt=""></div>
+                <h3>Pegador</h3>
+                <p class="preco">R$ 18,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Kit colher de madeira.png" alt=""></div>
+                <h3>Kit de Colher de Madeira</h3>
+                <p class="preco">R$ 87,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Descascador.png" alt=""></div>
+                <h3>Descascador</h3>
+                <p class="preco">R$ 19,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Ralador.png" alt=""></div>
+                <h3>Ralador</h3>
+                <p class="preco">R$ 35,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Cortador de pizza.png" alt=""></div>
+                <h3>Cortador de Pizza</h3>
+                <p class="preco">R$ 29,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Espremedor de alho.png" alt=""></div>
+                <h3>Espremedor de Alho</h3>
+                <p class="preco">R$ 20,42</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Funil.png" alt=""></div>
+                <h3>Funil</h3>
+                <p class="preco">R$ 19,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Luva térmica.png" alt=""></div>
+                <h3>Luva Térmica</h3>
+                <p class="preco">R$ 36,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Faca de pão.png" alt=""></div>
+                <h3>Faca de Pão</h3>
+                <p class="preco">R$ 23,20</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Faca de legumes.png" alt=""></div>
+                <h3>Faca de legumes</h3>
+                <p class="preco">R$ 21,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Jogo de facas.png" alt=""></div>
+                <h3>Jogo de Facas Tramontina</h3>
+                <p class="preco">R$ 280,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Afiador de faca.png" alt=""></div>
+                <h3>Afiador de Faca</h3>
+                <p class="preco">R$ 34,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Tábua de corte.png" alt=""></div>
+                <h3>Tábua de Corte</h3>
+                <p class="preco">R$ 66,59</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Medidor de xícara.png" alt=""></div>
+                <h3>Medidor de Xícara</h3>
+                <p class="preco">R$ 30,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Peneira.png" alt=""></div>
+                <h3>Peneira</h3>
+                <p class="preco">R$ 39,99</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Escorredor de macarrão.png" alt=""></div>
+                <h3>Escorredor de Macarrão</h3>
+                <p class="preco">R$ 39,90</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Escorredor de louça.png" alt=""></div>
+                <h3>Escorredor de Louça</h3>
+                <p class="preco">R$ 98,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Porta temperos.png" alt=""></div>
+                <h3>Porta Temperos</h3>
+                <p class="preco">R$ 68,99</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Potes herméticos.png" alt=""></div>
+                <h3>Potes Herméticos Combo</h3>
+                <p class="preco">R$ 97,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Organizador de geladeira.png" alt=""></div>
+                <h3>Organizador de Geladeira</h3>
+                <p class="preco">R$ 105,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <!-- SUPÉRFLUOS ENCAIXADOS NA COZINHA -->
+            <div class="card-presente" data-category="cozinha">
+                <div class="foto-placeholder"><img src="./assets/images/Máquina de coquetel.png" alt=""></div>
+                <h3>Máquina de Coquetel</h3>
+                <p class="preco">R$ 2.975,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+
+            <!-- ================= QUARTO & ROUPA DE CAMA ================= -->
+            <div class="card-presente" data-category="quarto">
+                <div class="foto-placeholder"><img src="./assets/images/Mesa de cabeceira.png" alt=""></div>
+                <h3>Mesa de Cabeceira</h3>
+                <p class="preco">R$ 339,39</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="quarto">
+                <div class="foto-placeholder"><img src="./assets/images/Espelho.png" alt=""></div>
+                <h3>Espelho</h3>
+                <p class="preco">R$ 123,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="quarto">
+                <div class="foto-placeholder"><img src="./assets/images/Abajur.png" alt=""></div>
+                <h3>Abajur</h3>
+                <p class="preco">R$ 142,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="quarto">
+                <div class="foto-placeholder"><img src="./assets/images/Cabide.png" alt=""></div>
+                <h3>Jogo de Cabides</h3>
+                <p class="preco">R$ 123,09</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="quarto">
+                <div class="foto-placeholder"><img src="./assets/images/Jogo de lençol.png" alt=""></div>
+                <h3>Jogo de Lençol Casal</h3>
+                <p class="preco">R$ 760,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="quarto">
+                <div class="foto-placeholder"><img src="./assets/images/Edredom.png" alt=""></div>
+                <h3>Edredom Casal</h3>
+                <p class="preco">R$ 399,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="quarto">
+                <div class="foto-placeholder"><img src="./assets/images/Cobertor.png" alt=""></div>
+                <h3>Cobertor</h3>
+                <p class="preco">R$ 129,10</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="quarto">
+                <div class="foto-placeholder"><img src="./assets/images/Travesseiro.png" alt=""></div>
+                <h3>Travesseiros</h3>
+                <p class="preco">R$ 169,99</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="quarto">
+                <div class="foto-placeholder"><img src="./assets/images/Fronha.png" alt=""></div>
+                <h3>Fronhas</h3>
+                <p class="preco">R$ 72,90</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="quarto">
+                <div class="foto-placeholder"><img src="./assets/images/Protetor de colchão.png" alt=""></div>
+                <h3>Protetor de Colchão</h3>
+                <p class="preco">R$ 149,99</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="quarto">
+                <div class="foto-placeholder"><img src="./assets/images/Protetor de travesseiro.png" alt=""></div>
+                <h3>Protetor de Travesseiro</h3>
+                <p class="preco">R$ 49,99</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+
+            <!-- ================= LAVANDERIA ================= -->
+            <div class="card-presente" data-category="lavanderia">
+                <div class="foto-placeholder"><img src="./assets/images/Máquina de lavar roupa.webp" alt=""></div>
+                <h3>Máquina de Lavar</h3>
+                <p class="preco">R$ 1.979,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="lavanderia">
+                <div class="foto-placeholder"><img src="./assets/images/Ferro de passar.png" alt=""></div>
+                <h3>Ferro de Passar</h3>
+                <p class="preco">R$ 115,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="lavanderia">
+                <div class="foto-placeholder"><img src="./assets/images/Tábua de passar.png" alt=""></div>
+                <h3>Tábua de Passar</h3>
+                <p class="preco">R$ 122,49</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="lavanderia">
+                <div class="foto-placeholder"><img src="./assets/images/Varal.png" alt=""></div>
+                <h3>Varal de Roupas</h3>
+                <p class="preco">R$ 210,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="lavanderia">
+                <div class="foto-placeholder"><img src="./assets/images/Pregadores.png" alt=""></div>
+                <h3>Pregadores de Roupa</h3>
+                <p class="preco">R$ 21,70</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="lavanderia">
+                <div class="foto-placeholder"><img src="./assets/images/Balde.png" alt=""></div>
+                <h3>Balde</h3>
+                <p class="preco">R$ 60,90</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="lavanderia">
+                <div class="foto-placeholder"><img src="./assets/images/Vassoura.png" alt=""></div>
+                <h3>Vassoura</h3>
+                <p class="preco">R$ 78,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="lavanderia">
+                <div class="foto-placeholder"><img src="./assets/images/Pá.png" alt=""></div>
+                <h3>Pá</h3>
+                <p class="preco">R$ 32,90</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+                        <div class="card-presente" data-category="lavanderia">
+                <div class="foto-placeholder"><img src="./assets/images/Rodo.png" alt=""></div>
+                <h3>Rodo</h3>
+                <p class="preco">R$ 57,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="lavanderia">
+                <div class="foto-placeholder"><img src="./assets/images/Robô aspirador e passa pano.png" alt=""></div>
+                <h3>Robô Aspirador e Passa Pano</h3>
+                <p class="preco">R$ 859,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="lavanderia">
+                <div class="foto-placeholder"><img src="./assets/images/Aspirador e passa pano.png" alt=""></div>
+                <h3>Aspirador de Pó Vertical e Passa Pano</h3>
+                <p class="preco">R$ 2.100,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="lavanderia">
+                <div class="foto-placeholder"><img src="./assets/images/Panos de limpeza.png" alt=""></div>
+                <h3>Panos de Limpeza e Microfibra</h3>
+                <p class="preco">R$ 27,90</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+
+            <!-- ================= SALA ================= -->
+            <div class="card-presente" data-category="sala">
+                <div class="foto-placeholder"><img src="./assets/images/Sofá.png" alt=""></div>
+                <h3>Sofá</h3>
+                <p class="preco">R$ 1939,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="sala">
+                <div class="foto-placeholder"><img src="./assets/images/Mesa de jantar.png" alt=""></div>
+                <h3>Mesa de Jantar</h3>
+                <p class="preco">R$ 1440,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="sala">
+                <div class="foto-placeholder"><img src="./assets/images/Estante.png" alt=""></div>
+                <h3>Estante de Sala</h3>
+                <p class="preco">R$ 779,89</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="sala">
+                <div class="foto-placeholder"><img src="./assets/images/Cortinas ou persianas.png" alt=""></div>
+                <h3>Cortinas ou Persianas</h3>
+                <p class="preco">R$ 699,99</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="sala">
+                <div class="foto-placeholder"><img src="./assets/images/Televisão.png" alt=""></div>
+                <h3>Televisão</h3>
+                <p class="preco">R$ 3.130,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="sala">
+                <div class="foto-placeholder"><img src="./assets/images/Alexa.png" alt=""></div>
+                <h3>Alexa</h3>
+                <p class="preco">R$ 470,90</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="sala">
+                <div class="foto-placeholder"><img src="./assets/images/Adega.png" alt=""></div>
+                <h3>Adega de Vinho</h3>
+                <p class="preco">R$ 920,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="sala">
+                <div class="foto-placeholder"><img src="./assets/images/Balde de gelo.png" alt=""></div>
+                <h3>Balde de Gelo</h3>
+                <p class="preco">R$ 33,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <div class="card-presente" data-category="sala">
+                <div class="foto-placeholder"><img src="./assets/images/Fondue.png" alt=""></div>
+                <h3>Aparelho de Fondue</h3>
+                <p class="preco">R$ 112,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+            <!-- SUPÉRFLUOS ENCAIXADOS NA SALA -->
+            <div class="card-presente" data-category="sala">
+                <div class="foto-placeholder"><img src="./assets/images/Luzes de emergência.png" alt=""></div>
+                <h3>Luzes de Emergência</h3>
+                <p class="preco">R$ 37,00</p>
+                <button class="btn-presentear">Presentear</button>
+            </div>
+
+        </div>
+    </section>
+
+        <footer class="rodape-loja">
+            <div class="logo-rodape">B&P</div>
+            <p>Agradecemos por fazer parte deste momento tão especial.</p>
+        </footer>
+    </body>
+</html>
