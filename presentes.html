@@ -613,9 +613,152 @@
         </div>
     </section>
 
+<!-- ================= MODAL DE PAGAMENTO EM 2 PASSOS ================= -->
+    <div id="modal-presente" class="modal-oculto">
+        <div class="modal-conteudo">
+            <span class="fechar-modal">&times;</span>
+            <h2 id="modal-nome-presente">Nome do Presente</h2>
+            <p id="modal-preco-presente" class="preco-destaque">R$ 00,00</p>
+
+            <!-- PASSO 1: FORMULÁRIO DE MENSAGEM -->
+            <div id="modal-passo-1">
+                <h3>Deixe sua mensagem para nós!</h3>
+                <p style="font-size: 14px; margin-bottom: 20px; color: var(--texto-suave);">Identifique-se primeiro para sabermos quem nos deu o presente. Após enviar, as opções de pagamento aparecerão.</p>
+                
+                <!-- Adicionei /ajax/ no link do FormSubmit para o envio ser silencioso -->
+                <form id="form-presente" action="https://formsubmit.co/ajax/pedrobrandao.ls@gmail.com" method="POST" class="formulario-mensagem">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="Novo Presente Recebido!">
+                    <input type="hidden" name="Presente Escolhido" id="input-presente-escolhido" value="">
+
+                    <div class="campo">
+                        <label for="nome-presenteador">Seu Nome</label>
+                        <input type="text" name="Nome" id="nome-presenteador" placeholder="Como devemos te agradecer?" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="mensagem">Mensagem para os noivos</label>
+                        <textarea name="Mensagem" id="mensagem" rows="3" placeholder="Deixe seu recadinho especial..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-confirmar-presente" id="btn-enviar-mensagem">Confirmar e Ir para Pagamento</button>
+                </form>
+            </div>
+
+            <!-- PASSO 2: OPÇÕES DE PAGAMENTO (Escondido no início) -->
+            <div id="modal-passo-2" style="display: none;">
+                <h3 style="color: #829379; margin-bottom: 10px;">Mensagem enviada com sucesso! ❤️</h3>
+                <p style="margin-bottom: 20px; font-size: 14px; color: var(--texto-suave);">Agora, escolha como prefere fazer o pagamento do presente:</p>
+
+                <div class="opcoes-pagamento">
+                    <div class="pix-area">
+                        <h3>Pagamento via Pix</h3>
+                        <img src="./assets/images/seu-qrcode-pix.png" alt="QR Code Pix" class="qr-code">
+                        <p>Chave Pix (Celular/CPF): <br><strong>sua-chave-pix-aqui</strong></p>
+                    </div>
+                    <div class="cartao-area">
+                        <h3>Cartão de Crédito</h3>
+                        <a href="COLE_O_LINK_DO_CARTAO_AQUI" target="_blank" class="btn-cartao">Pagar com Cartão</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
         <footer class="rodape-loja">
             <div class="logo-rodape">B&P</div>
             <p>Agradecemos por fazer parte deste momento tão especial.</p>
         </footer>
+<script>
+// 1. Captura os elementos principais
+        const modal = document.getElementById('modal-presente');
+        const btnFechar = document.querySelector('.fechar-modal');
+        const tituloModal = document.getElementById('modal-nome-presente');
+        const precoModal = document.getElementById('modal-preco-presente');
+        
+        // Elementos dos Passos 1 e 2
+        const passo1 = document.getElementById('modal-passo-1');
+        const passo2 = document.getElementById('modal-passo-2');
+        const formPresente = document.getElementById('form-presente');
+        const btnEnviarMensagem = document.getElementById('btn-enviar-mensagem');
+        const inputPresenteEscondido = document.getElementById('input-presente-escolhido');
+
+        const botoesPresentear = document.querySelectorAll('.btn-presentear');
+
+        // 2. Abre o Modal e reseta as etapas
+        botoesPresentear.forEach(botao => {
+            botao.addEventListener('click', function() {
+                // Sempre que abrir um novo presente, volta pro Passo 1 e limpa o form
+                passo1.style.display = 'block';
+                passo2.style.display = 'none';
+                formPresente.reset();
+                btnEnviarMensagem.innerText = "Confirmar e Ir para Pagamento";
+                btnEnviarMensagem.disabled = false;
+
+                // Pega os dados do card
+                const card = this.closest('.card-presente');
+                const nomePresente = card.querySelector('h3').innerText;
+                const precoPresente = card.querySelector('.preco').innerText;
+
+                // Preenche o Modal e o input invisível
+                tituloModal.innerText = nomePresente;
+                precoModal.innerText = precoPresente;
+                inputPresenteEscondido.value = nomePresente; 
+
+                // Mostra o Modal
+                modal.style.display = 'flex';
+            });
+        });
+
+        // 3. O SEGREDO: Intercepta o botão de enviar do Passo 1
+        formPresente.addEventListener('submit', function(evento) {
+            evento.preventDefault(); // Impede a página de recarregar!
+
+            // Mostra pro usuário que está carregando
+            btnEnviarMensagem.innerText = "Enviando mensagem...";
+            btnEnviarMensagem.disabled = true;
+
+            // Pega tudo que foi digitado
+            const dadosFormulario = new FormData(formPresente);
+
+            // Envia silenciosamente para o e-mail
+            fetch(formPresente.action, {
+                method: 'POST',
+                body: dadosFormulario,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(resposta => {
+                if (resposta.ok) {
+                    // SUCESSO! Esconde o formulário e mostra o pagamento (Passo 2)
+                    passo1.style.display = 'none';
+                    passo2.style.display = 'block';
+                } else {
+                    // Se der falha
+                    alert("Ocorreu um erro ao enviar. Tente novamente.");
+                    btnEnviarMensagem.innerText = "Confirmar e Ir para Pagamento";
+                    btnEnviarMensagem.disabled = false;
+                }
+            })
+            .catch(erro => {
+                alert("Erro de conexão. Verifique sua internet.");
+                btnEnviarMensagem.innerText = "Confirmar e Ir para Pagamento";
+                btnEnviarMensagem.disabled = false;
+            });
+        });
+
+        // 4. Fechar o Modal
+        btnFechar.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(evento) {
+            if (evento.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        </script>
     </body>
 </html>

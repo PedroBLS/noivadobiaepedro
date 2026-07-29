@@ -201,9 +201,6 @@ body {
     color: #FFFFFF;
 }
 
-/* ==========================================================================
-   Controles da Paginação (Estilo Loja Virtual)
-   ========================================================================== */
 #paginacao {
     display: flex;
     justify-content: center;
@@ -235,9 +232,6 @@ body {
     border-color: var(--cor-texto);
 }
 
-/* ==========================================================================
-   Rodapé da Loja (Para fechar o espaço em branco)
-   ========================================================================== */
 .rodape-loja {
     background-color: #FFFFFF;
     border-top: 1px solid var(--cor-borda);
@@ -258,6 +252,128 @@ body {
     font-size: 0.85rem;
     font-weight: 300;
     letter-spacing: 1px;
+}
+
+.modal-oculto {
+    display: none; /* Fica escondido até o JavaScript chamar */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro transparente */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-conteudo {
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto; /* Cria barra de rolagem se a tela do celular for pequena */
+}
+
+.fechar-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #AAA;
+    cursor: pointer;
+}
+
+.fechar-modal:hover { color: #333; }
+
+.preco-destaque {
+    font-size: 1.5rem;
+    color: var(--cor-destaque);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.opcoes-pagamento {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #FAFAFA;
+    border: 1px solid var(--cor-borda);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.qr-code {
+    width: 150px;
+    height: 150px;
+    margin: 10px auto;
+    border: 1px solid #CCC;
+    padding: 5px;
+    background: #FFF;
+}
+
+.btn-cartao {
+    display: inline-block;
+    background-color: var(--cor-botao);
+    color: #FFF;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 5px;
+    transition: 0.3s;
+}
+
+.btn-cartao:hover { background-color: #000; }
+
+.divisor-modal {
+    border: 0;
+    height: 1px;
+    background-color: var(--cor-borda);
+    margin: 20px 0;
+}
+
+.formulario-mensagem {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formulario-mensagem textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #D1D1D1;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    background-color: #FAFAFA;
+    resize: vertical;
+}
+
+.btn-confirmar-presente {
+    background-color: #829379; /* Verde Oliva do seu tema */
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 5px;
+}
+
+.btn-confirmar-presente:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
