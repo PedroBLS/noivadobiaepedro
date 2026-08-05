@@ -141,6 +141,47 @@ body {
     display: none !important;
 }
 
+.card-presente.esgotado {
+    opacity: 0.6;
+    background-color: #EFEFEF !important; /* Deixa o fundo do card cinza claro */
+    pointer-events: none !important; /* Desativa totalmente o clique */
+}
+
+/* Força a imagem a ficar em preto e branco e perder o destaque */
+.card-presente.esgotado .foto-placeholder {
+    filter: grayscale(100%) brightness(90%);
+    background-color: #E2E2E2 !important;
+}
+
+.card-presente.esgotado .foto-placeholder img {
+    filter: grayscale(100%);
+    opacity: 0.4;
+}
+
+.card-presente.esgotado h3 {
+    color: #777 !important;
+}
+
+.card-presente.esgotado .preco {
+    text-decoration: line-through; /* Risca o preço */
+    color: #999 !important;
+}
+
+.card-presente.esgotado .btn-presentear {
+    background-color: #888 !important;
+    color: #FFF !important;
+    border-color: #888 !important;
+    font-size: 0 !important; /* Esconde o texto "Presentear" */
+}
+
+/* Escreve o novo aviso por cima do botão */
+.card-presente.esgotado .btn-presentear::after {
+    content: "Já Presenteado ❤️" !important;
+    font-size: 0.75rem !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
 .foto-placeholder {
     width: 100%;
     height: 90px;

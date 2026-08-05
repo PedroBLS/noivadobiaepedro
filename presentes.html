@@ -643,7 +643,8 @@
                 <p style="font-size: 14px; margin-bottom: 20px; color: var(--texto-suave);">Identifique-se primeiro para sabermos quem nos deu o presente. Após enviar, as opções de pagamento aparecerão.</p>
                 
                 <!-- Adicionei /ajax/ no link do FormSubmit para o envio ser silencioso -->
-                <form id="form-presente" action="https://formsubmit.co/ajax/pedrobrandao.ls@gmail.com" method="POST" class="formulario-mensagem">
+                <form id="form-presente" action="https://formsubmit.co/ajax/pedrobrandao.ls@gmail.com" method="POST" class="formulario-mensagem" target="hidden-iframe">
+                    <iframe name="hidden-iframe" style="display:none;"></iframe>
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_subject" value="Novo Presente Recebido!">
                     <input type="hidden" name="Presente Escolhido" id="input-presente-escolhido" value="">
