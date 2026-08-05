@@ -643,8 +643,7 @@
                 <p style="font-size: 14px; margin-bottom: 20px; color: var(--texto-suave);">Identifique-se primeiro para sabermos quem nos deu o presente. Após enviar, as opções de pagamento aparecerão.</p>
                 
                 <!-- Adicionei /ajax/ no link do FormSubmit para o envio ser silencioso -->
-                <form id="form-presente" action="https://formsubmit.co/ajax/pedrobrandao.ls@gmail.com" method="POST" class="formulario-mensagem" target="hidden-iframe">
-                    <iframe name="hidden-iframe" style="display:none;"></iframe>
+                <form id="form-presente" action="https://formsubmit.co/ajax/pedrobrandao.ls@gmail.com" method="POST" class="formulario-mensagem">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_subject" value="Novo Presente Recebido!">
                     <input type="hidden" name="Presente Escolhido" id="input-presente-escolhido" value="">
@@ -708,7 +707,6 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    // Função para limpar os nomes dos presentes (tira acentos e espaços para o banco de dados não bugar)
     function criarIdSeguro(nome) {
         return nome.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]/g, '');
     }
@@ -716,17 +714,14 @@
     // =========================================================
     // A AUTOMAÇÃO: Lendo do Banco e Esgotando os Presentes
     // =========================================================
-    // O site fica "escutando" o banco em tempo real. Alguém comprou? Ele bloqueia na hora!
     onValue(ref(db, 'presentes_comprados'), (snapshot) => {
         const presentesComprados = snapshot.val() || {};
-        
         const todosOsCards = document.querySelectorAll('.card-presente');
         
         todosOsCards.forEach(card => {
             const nomeDoPresente = card.querySelector('h3').innerText;
             const idSeguro = criarIdSeguro(nomeDoPresente); 
             
-            // Se o presente estiver listado no banco, aplica a classe cinza do CSS
             if (presentesComprados[idSeguro]) {
                 card.classList.add('esgotado'); 
             }
@@ -740,13 +735,14 @@
     const btnFechar = document.querySelector('.fechar-modal');
     const tituloModal = document.getElementById('modal-nome-presente');
     const precoModal = document.getElementById('modal-preco-presente');
-    
     const passo1 = document.getElementById('modal-passo-1');
     const passo2 = document.getElementById('modal-passo-2');
     const formPresente = document.getElementById('form-presente');
     const btnEnviarMensagem = document.getElementById('btn-enviar-mensagem');
     const inputPresenteEscondido = document.getElementById('input-presente-escolhido');
-
+    
+    // Capturando a área do cartão e os botões
+    const cartaoArea = document.querySelector('.cartao-area');
     const botoesPresentear = document.querySelectorAll('.btn-presentear');
 
     let idPresenteAtual = ""; 
@@ -755,7 +751,6 @@
         botao.addEventListener('click', function() {
             const card = this.closest('.card-presente');
             
-            // Trava de segurança: Se já estiver esgotado, não faz nada
             if(card.classList.contains('esgotado')) return; 
 
             passo1.style.display = 'block';
@@ -767,7 +762,6 @@
             const nomePresente = card.querySelector('h3').innerText;
             const precoPresente = card.querySelector('.preco').innerText;
             
-            // Salva qual presente o convidado está comprando agora
             idPresenteAtual = criarIdSeguro(nomePresente);
 
             const imgQrCodeEspecifico = card.getAttribute('data-qrcode');
@@ -780,43 +774,49 @@
             if(imgQrCodeEspecifico) document.querySelector('.qr-code').src = imgQrCodeEspecifico;
             if(linkCartaoEspecifico) document.querySelector('.btn-cartao').href = linkCartaoEspecifico;
 
+            // =========================================================
+            // MÁGICA: Esconde o cartão de crédito se for o Pix Ajuda
+            // =========================================================
+            if (nomePresente === "Pix: Ajude com qualquer valor!") {
+                cartaoArea.style.display = 'none';
+            } else {
+                cartaoArea.style.display = 'block';
+            }
+
             modal.style.display = 'flex';
         });
     });
 
+    // =========================================================
+    // ENVIO DO EMAIL E SALVAMENTO NO FIREBASE
+    // =========================================================
     formPresente.addEventListener('submit', function(evento) {
         evento.preventDefault(); 
 
         btnEnviarMensagem.innerText = "Enviando mensagem...";
         btnEnviarMensagem.disabled = true;
 
-        const dadosFormulario = new FormData(formPresente);
-        const dadosEmJson = Object.fromEntries(dadosFormulario.entries());
-
+        // Dispara o e-mail silenciosamente da forma correta (FormData padrão)
         fetch(formPresente.action, {
             method: 'POST',
+            body: new FormData(formPresente),
             headers: {
-                'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            },
-            body: JSON.stringify(dadosEmJson)
+            }
         })
         .then(resposta => {
-            // SUCESSO NO E-MAIL: Avisa o banco de dados para bloquear o presente!
-            // Se o item NÃO for o Pix Ajuda Livre, ele grava no banco
+            // Sucesso no E-mail! Grava no banco e muda a tela
             if (idPresenteAtual !== criarIdSeguro("Pix: Ajude com qualquer valor!")) {
                 set(ref(db, 'presentes_comprados/' + idPresenteAtual), true);
             }
-            
             passo1.style.display = 'none';
             passo2.style.display = 'block';
         })
         .catch(erro => {
-            // ERRO FANTASMA: Avança a tela e avisa o banco do mesmo jeito
+            // Erro fantasma! Grava no banco e muda a tela mesmo assim
             if (idPresenteAtual !== criarIdSeguro("Pix: Ajude com qualquer valor!")) {
                 set(ref(db, 'presentes_comprados/' + idPresenteAtual), true);
             }
-
             passo1.style.display = 'none';
             passo2.style.display = 'block';
         });
