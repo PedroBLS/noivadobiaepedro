@@ -670,18 +670,27 @@
                 <div class="opcoes-pagamento">
                     <div class="pix-area">
                         <h3>Pagamento via Pix</h3>
-                        <img src="./assets/images/seu-qrcode-pix.png" alt="QR Code Pix" class="qr-code">
-                        <p>Chave Pix (Celular/CPF): <br><strong>sua-chave-pix-aqui</strong></p>
+                        
+                        <!-- A imagem do QR Code que será gerada na hora -->
+                        <img src="" alt="QR Code Pix" class="qr-code" style="display: block; margin: 10px auto;">
+                        
+                        <!-- Área do Pix Copia e Cola para os presentes normais -->
+                        <p id="titulo-copia-cola" style="font-size: 14px; margin-top: 10px; font-weight: bold;">Pix Copia e Cola:</p>
+                        <div class="area-copia-cola" style="display: flex; gap: 5px; justify-content: center; margin-bottom: 15px;">
+                            <input type="text" id="input-pix-copia-cola" readonly style="width: 70%; padding: 8px; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; background-color: #f9f9f9;">
+                            <button type="button" id="btn-copiar-pix" style="padding: 8px 12px; background-color: #829379; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Copiar</button>
+                        </div>
+
+                        <!-- Chave Normal Exclusiva para o Pix Ajuda Livre -->
+                        <p id="chave-pix-normal" style="display: none;">Chave Pix (E-mail): <br><strong style="font-size: 16px;">biamaque@gmail.com</strong></p>
                     </div>
+                    
                     <div class="cartao-area">
                         <h3>Cartão de Crédito</h3>
-                        <a href="COLE_O_LINK_DO_CARTAO_AQUI" target="_blank" class="btn-cartao">Pagar com Cartão</a>
+                        <a href="#" target="_blank" class="btn-cartao">Pagar com Cartão</a>
                     </div>
                 </div>
             </div>
-
-        </div>
-    </div>
 
         <footer class="rodape-loja">
             <div class="logo-rodape">B&P</div>
@@ -731,7 +740,7 @@
     // =========================================================
     // O MODAL DE PAGAMENTO
     // =========================================================
-    const modal = document.getElementById('modal-presente');
+const modal = document.getElementById('modal-presente');
     const btnFechar = document.querySelector('.fechar-modal');
     const tituloModal = document.getElementById('modal-nome-presente');
     const precoModal = document.getElementById('modal-preco-presente');
@@ -741,8 +750,14 @@
     const btnEnviarMensagem = document.getElementById('btn-enviar-mensagem');
     const inputPresenteEscondido = document.getElementById('input-presente-escolhido');
     
-    // Capturando a área do cartão e os botões
+    // Capturando os novos elementos da tela de pagamento
     const cartaoArea = document.querySelector('.cartao-area');
+    const imgQrCode = document.querySelector('.qr-code');
+    const areaCopiaCola = document.querySelector('.area-copia-cola');
+    const tituloCopiaCola = document.getElementById('titulo-copia-cola');
+    const chaveNormal = document.getElementById('chave-pix-normal');
+    const inputCopiaCola = document.getElementById('input-pix-copia-cola');
+    const btnCopiarPix = document.getElementById('btn-copiar-pix');
     const botoesPresentear = document.querySelectorAll('.btn-presentear');
 
     let idPresenteAtual = ""; 
@@ -761,32 +776,61 @@
 
             const nomePresente = card.querySelector('h3').innerText;
             const precoPresente = card.querySelector('.preco').innerText;
-            
             idPresenteAtual = criarIdSeguro(nomePresente);
 
-            const imgQrCodeEspecifico = card.getAttribute('data-qrcode');
+            const pixPayload = card.getAttribute('data-qrcode'); // Agora pega o texto Copia e Cola
             const linkCartaoEspecifico = card.getAttribute('data-link-cartao');
 
             tituloModal.innerText = nomePresente;
             precoModal.innerText = precoPresente;
             inputPresenteEscondido.value = nomePresente; 
 
-            if(imgQrCodeEspecifico) document.querySelector('.qr-code').src = imgQrCodeEspecifico;
-            if(linkCartaoEspecifico) document.querySelector('.btn-cartao').href = linkCartaoEspecifico;
-
             // =========================================================
-            // MÁGICA: Esconde o cartão de crédito se for o Pix Ajuda
+            // MÁGICA: Regras visuais para o tipo de presente
             // =========================================================
             if (nomePresente === "Pix: Ajude com qualquer valor!") {
+                // Se for o Pix Ajuda: Esconde QR Code, Esconde Copia/Cola, Esconde Cartão. Mostra só a chave!
                 cartaoArea.style.display = 'none';
+                imgQrCode.style.display = 'none';
+                areaCopiaCola.style.display = 'none';
+                tituloCopiaCola.style.display = 'none';
+                chaveNormal.style.display = 'block';
             } else {
+                // Se for um presente normal: Mostra tudo, gera o QR Code na hora e preenche o campo de copiar
                 cartaoArea.style.display = 'block';
+                imgQrCode.style.display = 'block';
+                areaCopiaCola.style.display = 'flex';
+                tituloCopiaCola.style.display = 'block';
+                chaveNormal.style.display = 'none';
+
+                if (pixPayload) {
+                    // Transforma o texto do Pix num QR Code de verdade usando a API do qrserver!
+                    imgQrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(pixPayload)}`;
+                    inputCopiaCola.value = pixPayload;
+                }
+                if (linkCartaoEspecifico) {
+                    document.querySelector('.btn-cartao').href = linkCartaoEspecifico;
+                }
             }
 
             modal.style.display = 'flex';
         });
     });
 
+    // Função de clique para o botão de Copiar
+    btnCopiarPix.addEventListener('click', function() {
+        inputCopiaCola.select();
+        inputCopiaCola.setSelectionRange(0, 99999); // Suporte para mobile
+        navigator.clipboard.writeText(inputCopiaCola.value);
+        
+        // Efeito visual no botão para mostrar que copiou
+        const textoOriginal = btnCopiarPix.innerText;
+        btnCopiarPix.innerText = "Copiado!";
+        setTimeout(() => {
+            btnCopiarPix.innerText = textoOriginal;
+        }, 2000);
+    });
+    
     // =========================================================
     // ENVIO DO EMAIL E SALVAMENTO NO FIREBASE
     // =========================================================
